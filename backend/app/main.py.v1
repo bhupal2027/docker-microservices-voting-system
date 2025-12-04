@@ -1,0 +1,33 @@
+from flask import Flask, jsonify, request
+import os
+import time
+from redis import Redis
+from tasks import send_async_task
+
+app = Flask(__name__)
+redis = Redis(host=os.getenv('REDIS_HOST','redis'), port=int(os.getenv('REDIS_PORT',6379)), decode_responses=True)
+
+@app.route('/')
+def hello():
+    return jsonify({"msg": "hello from backend"})
+
+# cached endpoint example
+@app.route('/hot/<key>')
+def hot(key):
+    v = redis.get(key)
+    if v:
+        return jsonify({"source":"cache","value":v})
+    # slow simulated fetch
+    v = f"value-for-{key}-{int(time.time())}"
+    redis.set(key, v, ex=60)  # expire 60s
+    return jsonify({"source":"origin","value":v})
+
+# trigger background job
+@app.route('/analytics', methods=['POST'])
+def analytics():
+    data = request.json or {}
+    send_async_task.delay(data.get('payload', {}))
+    return jsonify({"status":"queued"}), 202
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.getenv('BACKEND_PORT',8000)))
