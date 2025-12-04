@@ -1,26 +1,6 @@
 **📁 Project Structure**
 
-docker-microstack/
-│
-├── backend/
-│   ├── app/
-│   │   └── main.py
-│   ├── Dockerfile
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── VotePage.js
-│   │   └── ResultsPage.js
-│   ├── nginx.conf
-│   └── Dockerfile
-│
-├── nginx/
-│   └── default.conf
-│
-├── docker-compose.yml
-└── README.md
+
 
 **🔍 How It Works (Workflow Summary)**
 
