@@ -5,6 +5,32 @@ Users can vote for Cat or Dog and view live results, which are fetched from the 
 
 This setup is ideal for DevOps, Cloud, and SRE portfolio work.
 
+**🚀 Summary**
+
+By completing this project, the following Docker competencies were demonstrated:
+
+Dockerfile creation
+
+Multi-stage Docker builds
+
+Docker Compose orchestration
+
+Networking & container communication
+
+Reverse proxy configuration
+
+Persistent volumes
+
+Environment variable management
+
+Health monitoring
+
+Troubleshooting & debugging
+
+Full-stack Dockerized application design
+
+This is equivalent to real-world DevOps experience running microservices in containerised environments.
+
 **✨ Features**
 
 **🟦 React Frontend**
