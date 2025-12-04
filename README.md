@@ -65,8 +65,7 @@ Easy to run and extend
 
 **Architecture Diagram**
 
-
-
+https://github.com/bhupal2027/docker-microservices-voting-system/blob/47d6d41b3018a453855b3452cf62ad87adaed65e/Architecture%20Diagram.png
 
 
 **📁 Project Structure**
@@ -112,4 +111,42 @@ Container networking
 Docker Compose orchestration
 
 Production-like environment
+
+🚀 How to Run the Project
+**1️⃣ Build and Start All Services**
+
+docker compose up -d --build
+
+**2️⃣ Access Application**
+
+Component                  	    URL
+React App (via NGINX)          	http://localhost
+Vote Page	                    http://localhost/vote
+Results Page	                http://localhost/results
+pgAdmin UI	                    http://localhost:9090
+
+🧪 API Usage
+**✔ Submit Vote**
+
+curl -X POST http://localhost/api/vote \
+-H "Content-Type: application/json" \
+-d '{"animal": "cat"}'
+
+**✔ Get Vote Counts**
+
+curl http://localhost/api/votes
+
+**📦 Example Backend Output**
+
+{
+  "cat": 6,
+  "dog": 8
+}
+
+
+
+
+
+
+
 
